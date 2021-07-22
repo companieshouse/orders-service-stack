@@ -36,7 +36,7 @@ data "terraform_remote_state" "services-stack-configs" {
 }
 
 locals {
-  stack_name = "orders-notification-sender"
+  stack_name = "order-notification-sender"
   stack_fullname = "${local.stack_name}-stack"
   name_prefix = "${local.stack_name}-${var.environment}"
 }
@@ -45,7 +45,7 @@ data "vault_generic_secret" "secrets" {
   path = "applications/${var.aws_profile}/${var.environment}/${local.stack_fullname}"
 }
 
-module "orders-notification-secrets" {
+module "order-notification-secrets" {
   source = "./module-secrets"
   stack_name = local.stack_name
   name_prefix = local.name_prefix
@@ -54,19 +54,19 @@ module "orders-notification-secrets" {
   secrets = data.vault_generic_secret.secrets.data
 }
 
-module "orders-notification-iam" {
+module "order-notification-iam" {
   source = "./module-iam"
   deployment_name = local.name_prefix
 }
 
-module "orders-notification-ecs" {
+module "order-notification-ecs" {
   source = "./module-ecs"
   application_name = local.stack_name
   environment = var.environment
   cpu_units = var.cpu_units
   memory = var.memory
   deployment_name = local.name_prefix
-  role_arn = module.orders-notification-iam.task_execution_arn
+  role_arn = module.order-notification-iam.task_execution_arn
   vpc_id = data.terraform_remote_state.networks.outputs.vpc_id
   subnets = split(",", data.terraform_remote_state.networks.outputs.application_ids)
   container_insights_enabled = var.container_insights_enabled
@@ -77,5 +77,5 @@ module "orders-notification-ecs" {
     docker_registry = var.docker_registry
     release_version = var.release_version
     java_mem_args = var.java_mem_args
-  }, module.orders-notification-secrets.secrets_arn_map)
+  }, module.order-notification-secrets.secrets_arn_map)
 }

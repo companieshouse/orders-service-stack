@@ -1,6 +1,6 @@
-resource "aws_security_group" "orders-notification-security-group" {
+resource "aws_security_group" "order-notification-security-group" {
   name = var.deployment_name
-  description = "Orders notification sender security group"
+  description = "Order notification sender security group"
   vpc_id = var.vpc_id
 
   /*
@@ -28,7 +28,7 @@ resource "aws_security_group" "orders-notification-security-group" {
   }
 }
 
-resource "aws_ecs_cluster" "orders-notification-ecs-cluster" {
+resource "aws_ecs_cluster" "order-notification-ecs-cluster" {
   name = var.deployment_name
   setting {
     name  = "containerInsights"
@@ -41,7 +41,7 @@ resource "aws_ecs_cluster" "orders-notification-ecs-cluster" {
   }
 }
 
-resource "aws_ecs_task_definition" "orders-notification-task" {
+resource "aws_ecs_task_definition" "order-notification-task" {
   family = var.deployment_name
   execution_role_arn = var.role_arn
   task_role_arn = var.role_arn
@@ -57,15 +57,15 @@ resource "aws_ecs_task_definition" "orders-notification-task" {
   }
 }
 
-resource "aws_ecs_service" "orders-notification-service" {
+resource "aws_ecs_service" "order-notification-service" {
   name = var.deployment_name
-  cluster = aws_ecs_cluster.orders-notification-ecs-cluster.id
-  task_definition = aws_ecs_task_definition.orders-notification-task.arn
+  cluster = aws_ecs_cluster.order-notification-ecs-cluster.id
+  task_definition = aws_ecs_task_definition.order-notification-task.arn
   desired_count = 1
   launch_type = "FARGATE"
   network_configuration {
     subnets = var.subnets
-    security_groups = [aws_security_group.orders-notification-security-group.id]
+    security_groups = [aws_security_group.order-notification-security-group.id]
   }
   tags = {
     Name = var.deployment_name
