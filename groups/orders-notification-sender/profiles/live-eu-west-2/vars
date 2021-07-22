@@ -1,0 +1,6 @@
+environment = "live"
+deploy_to = "live"
+state_prefix = "env:/live"
+aws_profile = "live-eu-west-2"
+cpu_units = 128
+memory = 256

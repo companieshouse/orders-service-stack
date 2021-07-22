@@ -1,0 +1,25 @@
+[
+  {
+    "name": "${service_name}",
+    "image": "${docker_registry}/${service_name}:${release_version}",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-create-group": "true",
+        "awslogs-region": "${aws_region}",
+        "awslogs-group": "/ecs/${name_prefix}/${service_name}",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "environment": [
+      { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" }
+    ],
+    "secrets": [
+      { "name": "KAFKA_BROKER_ADDR", "valueFrom": "${orders-notification-secret-kafka-broker-addr}"},
+      { "name": "API_URL", "valueFrom": "${orders-notification-secret-api-url}"},
+      { "name": "CHS_API_KEY", "valueFrom": "${orders-notification-secret-chs-api-key}"},
+      { "name": "PAYMENTS_API_URL", "valueFrom": "${orders-notification-secret-payments-api-url}"},
+      { "name": "IS_ERROR_QUEUE_CONSUMER", "valueFrom": "${orders-notification-secret-error-consumer}"}
+    ]
+  }
+]
