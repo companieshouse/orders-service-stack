@@ -2,5 +2,5 @@ environment = "cidev"
 deploy_to = "development"
 state_prefix = "env:/development"
 aws_profile = "development-eu-west-2"
-cpu_units = 128
-memory = 256
+cpu_units = 256
+memory = 512

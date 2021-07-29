@@ -2,5 +2,5 @@ environment = "staging"
 deploy_to = "staging"
 state_prefix = "env:/staging"
 aws_profile = "staging-eu-west-2"
-cpu_units = 128
-memory = 256
+cpu_units = 256
+memory = 512
