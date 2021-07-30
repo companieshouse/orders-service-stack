@@ -14,6 +14,13 @@
     "environment": [
       { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" }
     ],
+    "healthCheck": {
+      "command": ["CMD-SHELL", "curl --fail http://localhost:8081/healthcheck || exit 1"],
+      "interval": 60,
+      "timeout": 10,
+      "retries": 3,
+      "startPeriod": 60
+    },
     "secrets": [
       { "name": "KAFKA_BROKER_ADDR", "valueFrom": "${order-notification-secret-kafka-broker-addr}"},
       { "name": "API_URL", "valueFrom": "${order-notification-secret-api-url}"},
