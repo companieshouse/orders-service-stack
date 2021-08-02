@@ -77,5 +77,7 @@ module "order-notification-ecs" {
     docker_registry = var.docker_registry
     release_version = var.release_version
     java_mem_args = var.java_mem_args
+    kafka_producer_timeout = var.kafka_producer_timeout
+    maximum_retries = var.maximum_retries
   }, module.order-notification-secrets.secrets_arn_map)
 }

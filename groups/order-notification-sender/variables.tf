@@ -80,3 +80,15 @@ variable "java_mem_args" {
   type = string
   default = ""
 }
+
+variable "kafka_producer_timeout" {
+  description = "The amount of time after which the Kafka producer will timeout."
+  type = number
+  default = 60
+}
+
+variable "maximum_retries" {
+  description = "The number of retries permitted before the message will be sent to the error topic."
+  type = number
+  default = 5
+}
