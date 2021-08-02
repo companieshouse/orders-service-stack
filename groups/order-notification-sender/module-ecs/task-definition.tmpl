@@ -12,7 +12,9 @@
       }
     },
     "environment": [
-      { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" }
+      { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" },
+      { "name": "KAFKA_PRODUCER_TIMEOUT", "value": "${kafka_producer_timeout}" },
+      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" }
     ],
     "healthCheck": {
       "command": ["CMD-SHELL", "curl --fail http://localhost:8081/healthcheck || exit 1"],
@@ -26,7 +28,8 @@
       { "name": "API_URL", "valueFrom": "${order-notification-secret-api-url}"},
       { "name": "CHS_API_KEY", "valueFrom": "${order-notification-secret-chs-api-key}"},
       { "name": "PAYMENTS_API_URL", "valueFrom": "${order-notification-secret-payments-api-url}"},
-      { "name": "IS_ERROR_QUEUE_CONSUMER", "valueFrom": "${order-notification-secret-error-consumer}"}
+      { "name": "IS_ERROR_QUEUE_CONSUMER", "valueFrom": "${order-notification-secret-error-consumer}"},
+      { "name": "EMAIL_SENDER_ADDRESS", "valueFrom": "${order-notification-secret-email-sender-address}"}
     ]
   }
 ]
