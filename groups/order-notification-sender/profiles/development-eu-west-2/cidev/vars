@@ -4,3 +4,5 @@ state_prefix = "env:/development"
 aws_profile = "development-eu-west-2"
 cpu_units = 256
 memory = 512
+dynamic_llp_certificate_orders_enabled = true
+dynamic_lp_certificate_orders_enabled = true

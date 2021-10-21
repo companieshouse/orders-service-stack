@@ -79,5 +79,7 @@ module "order-notification-ecs" {
     java_mem_args = var.java_mem_args
     kafka_producer_timeout = var.kafka_producer_timeout
     maximum_retries = var.maximum_retries
+    dynamic_llp_certificate_orders_enabled = var.dynamic_llp_certificate_orders_enabled
+    dynamic_lp_certificate_orders_enabled = var.dynamic_lp_certificate_orders_enabled
   }, module.order-notification-secrets.secrets_arn_map)
 }

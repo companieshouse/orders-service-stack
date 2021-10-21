@@ -92,3 +92,15 @@ variable "maximum_retries" {
   type = number
   default = 5
 }
+
+variable "dynamic_llp_certificate_orders_enabled" {
+  description = "Enable limited liability partnership specific experience for certificate ordering journey."
+  type = string
+  default = false
+}
+
+variable "dynamic_lp_certificate_orders_enabled" {
+  description = "Enable limited partnership specific experience for certificate ordering journey."
+  type = string
+  default = false
+}
