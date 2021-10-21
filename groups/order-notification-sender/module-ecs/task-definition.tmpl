@@ -14,9 +14,7 @@
     "environment": [
       { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" },
       { "name": "KAFKA_PRODUCER_TIMEOUT", "value": "${kafka_producer_timeout}" },
-      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" },
-      { "name": "DYNAMIC_LLP_CERTIFICATE_ORDERS_ENABLED", "value": "${dynamic_llp_certificate_orders_enabled}",
-      { "name": "DYNAMIC_LP_CERTIFICATE_ORDERS_ENABLED", "value": "${dynamic_lp_certificate_orders_enabled}"
+      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" }
     ],
     "healthCheck": {
       "command": ["CMD-SHELL", "curl --fail http://localhost:8081/healthcheck || exit 1"],
@@ -32,7 +30,9 @@
       { "name": "PAYMENTS_API_URL", "valueFrom": "${order-notification-secret-payments-api-url}"},
       { "name": "IS_ERROR_QUEUE_CONSUMER", "valueFrom": "${order-notification-secret-error-consumer}"},
       { "name": "EMAIL_SENDER_ADDRESS", "valueFrom": "${order-notification-secret-email-sender-address}"},
-      { "name": "DISPATCH_DAYS", "valueFrom": "${order-notification-secret-dispatch-days}"}
+      { "name": "DISPATCH_DAYS", "valueFrom": "${order-notification-secret-dispatch-days}"},
+      { "name": "DYNAMIC_LLP_CERTIFICATE_ORDERS_ENABLED", "value": "${order-notification-secret-llp-enabled}",
+      { "name": "DYNAMIC_LP_CERTIFICATE_ORDERS_ENABLED", "value": "${order-notification-secret-lp-enabled}"
     ]
   }
 ]
