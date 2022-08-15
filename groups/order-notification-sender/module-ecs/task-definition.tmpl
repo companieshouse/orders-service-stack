@@ -14,7 +14,8 @@
     "environment": [
       { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" },
       { "name": "KAFKA_PRODUCER_TIMEOUT", "value": "${kafka_producer_timeout}" },
-      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" }
+      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" },
+      { "name": "CHS_URL", value "${chs_url}"}
     ],
     "healthCheck": {
       "command": ["CMD-SHELL", "curl --fail http://localhost:8081/healthcheck || exit 1"],
@@ -32,8 +33,7 @@
       { "name": "EMAIL_SENDER_ADDRESS", "valueFrom": "${order-notification-secret-email-sender-address}"},
       { "name": "DISPATCH_DAYS", "valueFrom": "${order-notification-secret-dispatch-days}"},
       { "name": "DYNAMIC_LLP_CERTIFICATE_ORDERS_ENABLED", "valueFrom": "${order-notification-secret-llp-enabled}"},
-      { "name": "DYNAMIC_LP_CERTIFICATE_ORDERS_ENABLED", "valueFrom": "${order-notification-secret-lp-enabled}"},
-      { "name": "CHS_URL", "valueFrom": "${order-notification-secret-chs-url}" }
+      { "name": "DYNAMIC_LP_CERTIFICATE_ORDERS_ENABLED", "valueFrom": "${order-notification-secret-lp-enabled}"}
     ]
   }
 ]
