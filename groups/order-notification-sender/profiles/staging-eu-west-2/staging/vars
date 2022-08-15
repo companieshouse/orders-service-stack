@@ -4,3 +4,4 @@ state_prefix = "env:/staging"
 aws_profile = "staging-eu-west-2"
 cpu_units = 256
 memory = 512
+chs_url = "https://staging.company-information.service.gov.uk"

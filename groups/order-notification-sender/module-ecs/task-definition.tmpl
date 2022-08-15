@@ -14,7 +14,8 @@
     "environment": [
       { "name": "JAVA_MEM_ARGS", "value": "${java_mem_args}" },
       { "name": "KAFKA_PRODUCER_TIMEOUT", "value": "${kafka_producer_timeout}" },
-      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" }
+      { "name": "MAXIMUM_RETRIES", "value": "${maximum_retries}" },
+      { "name": "CHS_URL", value "${chs_url}"}
     ],
     "healthCheck": {
       "command": ["CMD-SHELL", "curl --fail http://localhost:8081/healthcheck || exit 1"],

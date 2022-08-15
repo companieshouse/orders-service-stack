@@ -92,3 +92,8 @@ variable "maximum_retries" {
   type = number
   default = 5
 }
+
+variable "chs_url" {
+  description = "The CHS protocol/hostname."
+  type = string
+}
